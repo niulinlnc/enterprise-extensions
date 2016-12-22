@@ -4,7 +4,7 @@
 # directory
 ##############################################################################
 from openerp import fields, models, api
-from openerp.osv import expression
+# from openerp.osv import expression
 
 
 class ProductTemplate(models.Model):
@@ -54,78 +54,68 @@ class ProductTemplate(models.Model):
 
     @api.model
     def _search_custom_search(self, operator, value):
-        # base_domain = args or []
-        # base_domain = []
-        # name = value
-        fields_names = ['name', 'product_brand_id', 'supplier_code']
-        exact_fields_names = ['internal_code', 'default_code']
-        # if we found exact default_code we return it
-        for exact_field_name in exact_fields_names:
-            recs = self.search([(exact_field_name, '=ilike', value)])
-            # TODO que hacemos, buscamos tmb por estos si no esexato igual?
-            if recs:
-                return [(exact_field_name, '=ilike', value)]
+        return ['|', '|', ('name', 'ilike', value),
+                ('product_brand_id.name', 'ilike', value),
+                ('supplier_code', 'ilike', value)]
 
+    # @api.model
+    # def _search_custom_search(self, operator, value):
+    #     # base_domain = args or []
+    #     # base_domain = []
+    #     # name = value
+    #     fields_names = ['name', 'product_brand_id', 'supplier_code']
+    #     exact_fields_names = ['internal_code', 'default_code']
+    #     # if we found exact default_code we return it
+    #     for exact_field_name in exact_fields_names:
+    #         recs = self.search([(exact_field_name, '=ilike', value)])
+    #         # TODO que hacemos, buscamos tmb por estos si no esexato igual?
+    #         if recs:
+    #             return [(exact_field_name, '=ilike', value)]
+    #     # if len(fields_names) > 1:
+    #     #     word_domain = ['|']
+    #     # else:
+    #     #     word_domain = []
 
-        # if len(fields_names) > 1:
-        #     word_domain = ['|']
-        # else:
-        #     word_domain = []
+    #     # words = value.split(',')
+    #     # if len(words) > 1:
+    #     #     domain = ['&']
+    #     # else:
+    #     #     domain = []
 
-        # words = value.split(',')
-        # if len(words) > 1:
-        #     domain = ['&']
-        # else:
-        #     domain = []
-
-        # Try regular search on each additional search field
-        # for rec_name in all_names[1:]:
-        #     domain = [(rec_name, operator, name)]
-        #     res = base_domain + domain
-        #     print 'res1', res
-        # # Try ordered word search on each of the search fields
-        # for rec_name in all_names:
-        #     domain = [(rec_name, operator, name.replace(' ', '%'))]
-        #     res = base_domain + domain
-        #     print 'res3', res
-        # Try unordered word search on each of the search fields
-        domain = []
-        for word in value.split(','):
-            word_domain = []
-            # domain = [(word, operator, x) for x in all_names]
-            for field_name in fields_names:
-                # word_domain = [(word, operator, field_name)]
-                word_domain = (
-                    word_domain and ['|'] + word_domain or word_domain
-                ) + [(field_name, operator, word)]
-            print 'res3', word_domain
-            # for x in range(len(domain) - 1):
-            #     domain = ['|'] + domain
-            # if base_domain
-            # domain = domain + word_domain
-            domain = (domain and ['&'] + domain or domain) + word_domain
-            print 'res3', domain
-        print 'res', domain
-
-
-        # for rec_name in all_names:
-        #     domain = [(rec_name, operator, x)
-        #               for x in name.split() if x]
-        #     print 'res3', domain
-        #     for x in range(len(domain)-1):
-        #         domain = ['&'] + domain
-        #     # if base_domain
-        #     base_domain = (base_domain and ['|'] + base_domain or base_domain) + domain
-        #     print 'res3', base_domain
-        # print 'res', base_domain
-
-
-            # for x in range(len(domain)-1):
-            #     domains += ['&'] + domain
-        # recs = ['|', '|', ('name', 'ilike', value),
-        #         ('product_brand_id.name', 'ilike', value),
-        #         ('supplier_code', 'ilike', value)]
-        return domain
+    #     # Try regular search on each additional search field
+    #     # for rec_name in all_names[1:]:
+    #     #     domain = [(rec_name, operator, name)]
+    #     #     res = base_domain + domain
+    #     #     print 'res1', res
+    #     # # Try ordered word search on each of the search fields
+    #     # for rec_name in all_names:
+    #     #     domain = [(rec_name, operator, name.replace(' ', '%'))]
+    #     #     res = base_domain + domain
+    #     #     print 'res3', res
+    #     # Try unordered word search on each of the search fields
+    #     domain = []
+    #     for word in value.split(','):
+    #         word_domain = []
+    #         # domain = [(word, operator, x) for x in all_names]
+    #         for field_name in fields_names:
+    #             # word_domain = [(word, operator, field_name)]
+    #             word_domain = (
+    #                 word_domain and ['|'] + word_domain or word_domain
+    #             ) + [(field_name, operator, word)]
+    #         print 'res3', word_domain
+    #         # for x in range(len(domain) - 1):
+    #         #     domain = ['|'] + domain
+    #         # if base_domain
+    #         # domain = domain + word_domain
+    #         domain = (domain and ['&'] + domain or domain) + word_domain
+    #         print 'res3', domain
+    #     print 'res', domain
+    #         # for x in range(len(domain)-1):
+    #         #     domains += ['&'] + domain
+    #     # recs = ['|', '|', ('name', 'ilike', value),
+    #     #         ('product_brand_id.name', 'ilike', value),
+    #     #         ('supplier_code', 'ilike', value)]
+    #     return domain
 
     @api.multi
     def _get_custom_search(self):

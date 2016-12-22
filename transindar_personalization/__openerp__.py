@@ -33,6 +33,7 @@ Transindar Personalization
         'sale_stock_availability',
         'product_brand',
         'product_website_categ_search',
+        'product_category_full_name_search',
         'product_internal_code',
         'partner_internal_code',
         'sale_three_discounts',
@@ -99,7 +100,7 @@ Transindar Personalization
         'category_public_view.xml',
         'category_public_view.xml',
         'invoice_view.xml',
-        # 'res_partner_view.xml',
+        'res_partner_view.xml',
         'stock_picking_view.xml',
         'res_company_view.xml'
     ],
