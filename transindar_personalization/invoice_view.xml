@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
-    <data noupdate="1">
+    <data noupdate="0">
+    <!-- <data noupdate="1"> -->
         <record id="invoice_form" model="ir.ui.view">
             <field name="name">Boggio Personalization invoice.form.inherit</field>
             <field name="model">account.invoice</field>
