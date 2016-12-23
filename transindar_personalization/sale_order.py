@@ -51,12 +51,8 @@ class SaleOrderLine(models.Model):
     @api.one
     @api.onchange('additional_description')
     def change_additional_description(self):
-        vals = self.product_id_change(
-            pricelist=self.order_id.pricelist_id.id,
-            product=self.product_id.id,
-            partner_id=self.order_id.partner_id.id)
-        name = vals.get('value', {}).get('name', False)
-        if name:
-            if self.additional_description:
-                name = "%s\n%s" % (name, self.additional_description or '')
-            self.name = name
+        self.product_id_change()
+        name = self.name
+        if self.additional_description:
+            name = "%s\n%s" % (name, self.additional_description or '')
+        self.name = name

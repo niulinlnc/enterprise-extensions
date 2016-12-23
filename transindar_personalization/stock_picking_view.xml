@@ -33,7 +33,7 @@
                 <field name="partner_id" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
-                <field name="date" position="attributes">
+                <field name="min_date" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
                 <field name="origin" position="attributes">
@@ -42,9 +42,9 @@
                 <field name="move_type" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
-                <field name="invoice_state" position="attributes">
+                <!-- <field name="invoice_state" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
-                </field>
+                </field> -->
                 <field name="declared_value" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>

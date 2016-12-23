@@ -5,6 +5,7 @@
             <field name="name">Boggio Personalization invoice.form.inherit</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
+            <!-- <field name="inherit_id" ref="account_document.view_invoice_form"/> -->
             <field name="groups_id" eval="[(6, 0, [ref('group_restrict_edit')])]"/>
             <field name="priority">20</field>
             <field name="arch" type="xml">
@@ -12,44 +13,44 @@
                     <attribute name="invisible">True</attribute>
                 </button>
                 <field name="origin" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <!-- <xpath expr="//page[@string='Other Info']//field[@name='company_id']" position="attributes"> -->
-                <xpath expr="//page[1]//field[@name='company_id']" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
-                </xpath>
+<!--                 <xpath expr="//page[1]//field[@name='company_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
+                </xpath> -->
                 <field name="date_invoice" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="partner_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <field name="account_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
-                </field>
+                <!-- <field name="account_id" position="attributes">
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
+                </field> -->
                 <field name="tax_line_ids" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="currency_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <field name="section_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
-                </field>
+                <!-- <field name="section_id" position="attributes">
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
+                </field> -->
                 <field name="user_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <field name="fiscal_position" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                <field name="fiscal_position_id" position="attributes">
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="date_due" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <field name="payment_term" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                <field name="payment_term_id" position="attributes">
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="partner_bank_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type','!=','debit_note')]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
 
             </field>
