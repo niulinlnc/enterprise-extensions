@@ -4,7 +4,7 @@
     <!-- <data noupdate="1"> -->
 
         <record id="view_sale_order_tree" model="ir.ui.view">
-            <field name="name">sale.order.form</field>
+            <field name="name">Boggio Personalization sale.order.form</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="priority">20</field>
@@ -74,7 +74,7 @@
 
         <!-- heredamos la visat anterior solo para grupo restrict prices por compatibilidad con price security -->
         <record id="view_sale_order_price_tree" model="ir.ui.view">
-            <field name="name">sale.order.form</field>
+            <field name="name">Boggio Personalization sale.order.form</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="view_sale_order_tree"/>
             <field name="groups_id" eval="[(6, 0, [ref('price_security.group_restrict_prices')])]"/>
@@ -86,7 +86,7 @@
         </record>
 
         <record id="view_quotation_tree" model="ir.ui.view">
-            <field name="name">sale.order.tree</field>
+            <field name="name">Boggio Personalization sale.order.tree</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_quotation_tree"/>
             <field name="arch" type="xml">
@@ -97,7 +97,7 @@
         </record>
 
         <record id="view_order_tree" model="ir.ui.view">
-            <field name="name">sale.order.tree</field>
+            <field name="name">Boggio Personalization sale.order.tree</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">

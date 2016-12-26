@@ -3,16 +3,22 @@
     <data noupdate="0">
     <!-- <data noupdate="1"> -->
 
-<!--         <record id="partner_search_view" model="ir.ui.view">
-            <field name="name">res.partner.form</field>
+        <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">Boggio Personalization res.partner.tree</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
-                <field name="name" position="before">
-                    <field name="custom_search"/>
+                <field name="display_name" position="after">
+                    <field name="ref"/>
+                </field>
+                <field name="phone" position="after">
+                    <field name="street"/>
+                </field>
+                <field name="email" position="after">
+                    <field name="main_id_number"/>
                 </field>
             </field>
         </record>
-  -->
+ 
     </data>
 </openerp>

@@ -3,7 +3,7 @@
     <data noupdate="0">
     <!-- <data noupdate="1"> -->
         <record id="view_move_picking_tree" model="ir.ui.view">
-            <field name="name">stock.move.tree</field>
+            <field name="name">Boggio Personalization stock.move.tree</field>
             <field name="model">stock.move</field>
             <field name="inherit_id" ref="stock.view_move_picking_tree"/>
             <field name="arch" type="xml">
@@ -14,7 +14,7 @@
         </record>
 
         <record id="view_picking_tree" model="ir.ui.view">
-            <field name="name">stock.picking.tree</field>
+            <field name="name">Boggio Personalization stock.picking.tree</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
@@ -25,7 +25,7 @@
         </record>
 
         <record id="stock_picking_form" model="ir.ui.view">
-            <field name="name">stock.picking.form.inherit</field>
+            <field name="name">Boggio Personalization stock.picking.form.inherit</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="groups_id" eval="[(6, 0, [ref('group_restrict_edit')])]"/>
