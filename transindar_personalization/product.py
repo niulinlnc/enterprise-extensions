@@ -11,6 +11,8 @@ class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
 
+    mian_supplier_id = fields.Many2one(
+        related='seller_ids.name', string="Supplier")
     supplier_code = fields.Char(
         related='seller_ids.product_code', string="Supplier Code")
     location_1 = fields.Char(String='Location 1')
@@ -21,42 +23,42 @@ class ProductTemplate(models.Model):
     stk_tmp_raf = fields.Char('S. Rafaela')
     next_deactivate = fields.Date('Next Deactivate')
 
-    @api.model
-    def name_search(
-            self, name, args=None, operator='ilike', limit=100):
-        recs = self.search(self._get_search_domain(
-            name, args=args, operator=operator, limit=limit), limit=limit)
-        return recs.name_get()
+    # @api.model
+    # def name_search(
+    #         self, name, args=None, operator='ilike', limit=100):
+    #     recs = self.search(self._get_search_domain(
+    #         name, args=args, operator=operator, limit=limit), limit=limit)
+    #     return recs.name_get()
 
-    @api.model
-    def _get_search_domain(
-            self, name, args=None, operator='ilike', limit=100):
-        if not args:
-            args = []
-        if name:
-            # if we found exact internal_code we return it
-            if self.search(
-                    [('internal_code', '=ilike', name)], limit=limit):
-                return [('internal_code', '=ilike', name)] + args
+    # @api.model
+    # def _get_search_domain(
+    #         self, name, args=None, operator='ilike', limit=100):
+    #     if not args:
+    #         args = []
+    #     if name:
+    #         # if we found exact internal_code we return it
+    #         if self.search(
+    #                 [('internal_code', '=ilike', name)], limit=limit):
+    #             return [('internal_code', '=ilike', name)] + args
 
-            # if we found exact default_code we return it
-            elif self.search(
-                    [('default_code', '=ilike', name)], limit=limit):
-                return [('default_code', '=ilike', name)] + args
+    #         # if we found exact default_code we return it
+    #         elif self.search(
+    #                 [('default_code', '=ilike', name)], limit=limit):
+    #             return [('default_code', '=ilike', name)] + args
 
-            # else we return custom search
-            else:
-                return [
-                    '|', '|', ('name', 'ilike', name),
-                    ('product_brand_id.name', 'ilike', name),
-                    ('supplier_code', 'ilike', name)] + args
-        return args
+    #         # else we return custom search
+    #         else:
+    #             return [
+    #                 '|', '|', ('name', 'ilike', name),
+    #                 ('product_brand_id.name', 'ilike', name),
+    #                 ('supplier_code', 'ilike', name)] + args
+    #     return args
 
-    @api.model
-    def _search_custom_search(self, operator, value):
-        return ['|', '|', ('name', 'ilike', value),
-                ('product_brand_id.name', 'ilike', value),
-                ('supplier_code', 'ilike', value)]
+    # @api.model
+    # def _search_custom_search(self, operator, value):
+    #     return ['|', '|', ('name', 'ilike', value),
+    #             ('product_brand_id.name', 'ilike', value),
+    #             ('supplier_code', 'ilike', value)]
 
     # @api.model
     # def _search_custom_search(self, operator, value):
@@ -117,15 +119,15 @@ class ProductTemplate(models.Model):
     #     #         ('supplier_code', 'ilike', value)]
     #     return domain
 
-    @api.multi
-    def _get_custom_search(self):
-        return False
+    # @api.multi
+    # def _get_custom_search(self):
+    #     return False
 
-    custom_search = fields.Char(
-        compute='_get_custom_search',
-        string='Busqueda Inteligente',
-        search='_search_custom_search'
-    )
+    # custom_search = fields.Char(
+    #     compute='_get_custom_search',
+    #     string='Busqueda Inteligente',
+    #     search='_search_custom_search'
+    # )
 
     @api.multi
     def get_invoice_analisis(self):
@@ -164,51 +166,51 @@ class ProductProduct(models.Model):
             'context': context,
         }
 
-    @api.model
-    def name_search(
-            self, name, args=None, operator='ilike', limit=100):
-        recs = self.search(self._get_search_domain(
-            name, args=args, operator=operator, limit=limit), limit=limit)
-        return recs.name_get()
+    # @api.model
+    # def name_search(
+    #         self, name, args=None, operator='ilike', limit=100):
+    #     recs = self.search(self._get_search_domain(
+    #         name, args=args, operator=operator, limit=limit), limit=limit)
+    #     return recs.name_get()
 
-    @api.model
-    def _get_search_domain(
-            self, name, args=None, operator='ilike', limit=100):
-        if not args:
-            args = []
-        if name:
-            # if we found exact internal_code we return it
-            if self.search(
-                    [('internal_code', '=ilike', name)], limit=limit):
-                return [('internal_code', '=ilike', name)] + args
+    # @api.model
+    # def _get_search_domain(
+    #         self, name, args=None, operator='ilike', limit=100):
+    #     if not args:
+    #         args = []
+    #     if name:
+    #         # if we found exact internal_code we return it
+    #         if self.search(
+    #                 [('internal_code', '=ilike', name)], limit=limit):
+    #             return [('internal_code', '=ilike', name)] + args
 
-            # if we found exact default_code we return it
-            elif self.search(
-                    [('default_code', '=ilike', name)], limit=limit):
-                return [('default_code', '=ilike', name)] + args
+    #         # if we found exact default_code we return it
+    #         elif self.search(
+    #                 [('default_code', '=ilike', name)], limit=limit):
+    #             return [('default_code', '=ilike', name)] + args
 
-            # else we return custom search
-            else:
-                return [
-                    '|', '|', ('name', 'ilike', name),
-                    ('product_brand_id.name', 'ilike', name),
-                    ('supplier_code', 'ilike', name)] + args
+    #         # else we return custom search
+    #         else:
+    #             return [
+    #                 '|', '|', ('name', 'ilike', name),
+    #                 ('product_brand_id.name', 'ilike', name),
+    #                 ('supplier_code', 'ilike', name)] + args
 
-        return args
+    #     return args
 
-    @api.model
-    def _search_custom_search(self, operator, value):
-        recs = ['|', '|', ('name', 'ilike', value),
-                ('product_brand_id.name', 'ilike', value),
-                ('supplier_code', 'ilike', value)]
-        return recs
+    # @api.model
+    # def _search_custom_search(self, operator, value):
+    #     recs = ['|', '|', ('name', 'ilike', value),
+    #             ('product_brand_id.name', 'ilike', value),
+    #             ('supplier_code', 'ilike', value)]
+    #     return recs
 
-    @api.multi
-    def _get_custom_search(self):
-        return False
+    # @api.multi
+    # def _get_custom_search(self):
+    #     return False
 
-    custom_search = fields.Char(
-        compute='_get_custom_search',
-        string='Busqueda Inteligente',
-        search='_search_custom_search'
-    )
+    # custom_search = fields.Char(
+    #     compute='_get_custom_search',
+    #     string='Busqueda Inteligente',
+    #     search='_search_custom_search'
+    # )

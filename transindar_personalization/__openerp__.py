@@ -100,7 +100,7 @@ Transindar Personalization
         'category_public_view.xml',
         'category_public_view.xml',
         'invoice_view.xml',
-        'res_partner_view.xml',
+        # 'res_partner_view.xml',
         'stock_picking_view.xml',
         'res_company_view.xml'
     ],
