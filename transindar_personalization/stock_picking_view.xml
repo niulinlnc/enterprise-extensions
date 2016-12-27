@@ -24,7 +24,21 @@
             </field>
         </record>
 
-        <record id="stock_picking_form" model="ir.ui.view">
+        <record id="view_picking" model="ir.ui.view">
+            <field name="name">Boggio Personalization stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_picking_control.view_picking_form"/>
+            <!-- <field name="groups_id" eval="[(6, 0, [ref('group_restrict_edit')])]"/> -->
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <field name="purchase_order_number" position="attributes">
+                    <attribute name="attrs">{'readonly':[('block_add_lines','=',True)]}</attribute>
+                </field>
+            </field>
+        </record>
+
+        <!-- moved to stock picking control -->
+        <!-- <record id="stock_picking_form" model="ir.ui.view">
             <field name="name">Boggio Personalization stock.picking.form.inherit</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
@@ -43,9 +57,6 @@
                 <field name="move_type" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
-                <!-- <field name="invoice_state" position="attributes">
-                    <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
-                </field> -->
                 <field name="declared_value" position="attributes">
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
@@ -53,7 +64,7 @@
                     <attribute name="attrs">{'readonly':[('picking_type_code','=','outgoing')]}</attribute>
                 </field>
             </field>
-        </record>
+        </record> -->
         
     </data>
 </openerp>

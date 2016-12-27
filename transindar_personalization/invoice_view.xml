@@ -2,11 +2,11 @@
 <openerp>
     <data noupdate="0">
     <!-- <data noupdate="1"> -->
-        <record id="invoice_form" model="ir.ui.view">
+        <!-- integrado en account_invoice_control -->
+        <!-- <record id="invoice_form" model="ir.ui.view">
             <field name="name">Boggio Personalization invoice.form.inherit</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
-            <!-- <field name="inherit_id" ref="account_document.view_invoice_form"/> -->
             <field name="groups_id" eval="[(6, 0, [ref('group_restrict_edit')])]"/>
             <field name="priority">20</field>
             <field name="arch" type="xml">
@@ -16,28 +16,18 @@
                 <field name="origin" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <!-- <xpath expr="//page[@string='Other Info']//field[@name='company_id']" position="attributes"> -->
-<!--                 <xpath expr="//page[1]//field[@name='company_id']" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
-                </xpath> -->
                 <field name="date_invoice" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="partner_id" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <!-- <field name="account_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
-                </field> -->
                 <field name="tax_line_ids" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
                 <field name="currency_id" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
-                <!-- <field name="section_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
-                </field> -->
                 <field name="user_id" position="attributes">
                     <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('document_type_internal_type','!=','debit_note')]}</attribute>
                 </field>
@@ -55,7 +45,7 @@
                 </field>
 
             </field>
-        </record>
+        </record> -->
 
 
         <record id="invoice_tree" model="ir.ui.view">

@@ -8,19 +8,19 @@
     </record>
 
     <record model="ir.module.category" id="module_prices_management">
-        <field name="name">Restrict Prices</field>
+        <field name="name">Restricción de precios</field>
         <field name="sequence">1</field>
         <field name="parent_id" ref="base.module_category_tools"/>
     </record>
 
     <record model="res.groups" id="group_only_view_sale_price">
         <field name="category_id" ref="module_prices_management"/>
-        <field name="name">Only view sales price</field>
+        <field name="name">Solo ver: precio de venta</field>
     </record>
     <record model="res.groups" id="group_only_view">
         <field name="category_id" ref="module_prices_management"/>
         <field name="implied_ids" eval="[(4, ref('group_only_view_sale_price'))]"/>
-        <field name="name">Only View</field>
+        <field name="name">Solo ver: precio venta y compra</field>
     </record>
 
     <!-- este grupo no lo creamos ya que si queremos que edite directamente  -->
@@ -30,11 +30,20 @@
         <field name="name">Edit and View</field>
     </record> -->
 
-    <record model="res.groups" id="group_restrict_edit">
+    <!-- esta usabilidad esta ahora en account_invoice_control y stock_picking_control -->
+<!--     <record model="res.groups" id="group_restrict_edit">
         <field name="name">Restrict Edit Invoice And Picking Fields</field>
+    </record> -->
+
+    <record model="ir.module.category" id="module_personalizaciones_boggio">
+        <field name="name">Personalizaciones Boggio</field>
+        <field name="sequence">1</field>
+        <field name="parent_id" ref="base.module_category_tools"/>
     </record>
+
     <record model="res.groups" id="group_allow_manage_products">
         <field name="name">Allow manage products</field>
+        <field name="category_id" ref="module_personalizaciones_boggio"/>
     </record>
 
     <record id="product_product_read_only_all" model="ir.rule">
