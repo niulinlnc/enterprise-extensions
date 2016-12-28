@@ -10,9 +10,11 @@
             <field name="priority">20</field>
             <field name="arch" type="xml">
                 <!-- inherit of common product form view -->
-                <xpath expr="//div[@name='button_box']" position="inside">
-                   <button class="oe_stat_button" string="Invoices Line Report" name="get_invoice_analisis" type="object" icon="fa-bar-chart-o" groups="account.group_account_invoice"/>
-                </xpath>
+
+                <!-- moved to l10n_ar_account -->
+                <!-- <xpath expr="//div[@name='button_box']" position="inside">
+                   <button class="oe_stat_button" string="Invoices Line Report" name="%(account.action_account_invoice_report_all)d" type="action" icon="fa-bar-chart-o" groups="account.group_account_invoice" domain="['product_id', 'in', self.product_variant_ids.ids]"/>
+                </xpath> -->
                  <group name="group_lots_and_weight" position="after">
                     <group name="ubicaciones_boggio">
                         <field name="location_1"/>

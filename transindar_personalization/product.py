@@ -129,16 +129,17 @@ class ProductTemplate(models.Model):
     #     search='_search_custom_search'
     # )
 
-    @api.multi
-    def get_invoice_analisis(self):
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'account.invoice.line.report',
-            'view_mode': 'tree,graph',
-            'view_type': 'form',
-            'context': {
-                'search_default_product_id': self.product_variant_ids[0].id},
-        }
+    # moved to l10n_ar_account
+    # @api.multi
+    # def get_invoice_analisis(self):
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'res_model': 'account.invoice.line.report',
+    #         'view_mode': 'tree,graph',
+    #         'view_type': 'form',
+    #         'context': {
+    #             'search_default_product_id': self.product_variant_ids[0].id},
+    #     }
 
 
 class ProductProduct(models.Model):
