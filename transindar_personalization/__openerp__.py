@@ -30,6 +30,7 @@ Transindar Personalization
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'depends': [
+        'base_name_search_improved',
         'sale_stock_availability',
         'product_brand',
         'product_website_categ_search',
