@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
-    <data noupdate="1">
+    <data noupdate="0">
+    <!-- <data noupdate="1"> -->
 
     <!-- restrict prices to portal -->
     <record id="base.group_portal" model="res.groups">
