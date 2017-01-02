@@ -21,7 +21,7 @@
 {
     'name': 'Transindar Personalization',
     'category': 'Stock',
-    'version': '9.0.2.0.0',
+    'version': '9.0.2.1.0',
     'description': """
 Transindar Personalization
 ==========================
@@ -48,7 +48,8 @@ Transindar Personalization
         # 'stock_picking_list',
         # 'account_invoice_prices_update',
         # 'product_template_tree_prices',
-        # 'account_invoice_control',
+        'account_invoice_control',
+        'sale_order_type',
         # no se migran
         # 'sale_order_dates',
         # AGREGADOS POR JUAN

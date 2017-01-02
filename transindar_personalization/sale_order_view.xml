@@ -56,13 +56,14 @@
                 <xpath expr="//field[@name='order_line']//tree//field[@name='discount3']" position="after">
                     <field name="price_reduce" string="Discounted Unit Price"/>
                 </xpath>
-                <xpath expr="//field[@name='order_line']//tree//field[@name='virtual_available']" position="replace"/> 
-                <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="replace"/> 
-                <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="replace"/>
-                <xpath expr="//field[@name='order_line']//tree//field[@name='tax_id']" position="replace"/>
-                <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="before">
-                    <!-- porque lo quieren tener ubicado en otro lugar y para que uclte a los que no pueden ver precios -->
-                    <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"/>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='virtual_available']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="attributes"> 
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="after">
                     <field name="discount" groups="sale.group_discount_per_so_line"/>
@@ -71,19 +72,6 @@
                 </xpath>
             </field>
         </record>       
-
-        <!-- heredamos la visat anterior solo para grupo restrict prices por compatibilidad con price security -->
-        <record id="view_sale_order_price_tree" model="ir.ui.view">
-            <field name="name">Boggio Personalization sale.order.form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="view_sale_order_tree"/>
-            <field name="groups_id" eval="[(6, 0, [ref('price_security.group_restrict_prices')])]"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
-                    <attribute name="attrs">{'readonly':[('product_can_modify_prices','=', False)]}</attribute>
-                </xpath>
-            </field>
-        </record>
 
         <record id="view_quotation_tree" model="ir.ui.view">
             <field name="name">Boggio Personalization sale.order.tree</field>
