@@ -8,7 +8,7 @@
             <field name="groups_id" eval="[(6, 0, [ref('account_invoice_control.group_restrict_edit_invoice')])]"/>
             <field name="arch" type="xml">
                 <field name="sale_type_id" position="attributes">
-                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('sale_order_ids','!=',[(6, False, [])])]}</attribute>
+                    <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('sale_order_ids','!=',[])]}</attribute>
                 </field>
             </field>
         </record>
