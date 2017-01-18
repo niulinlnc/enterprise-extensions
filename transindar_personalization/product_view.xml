@@ -25,7 +25,7 @@
                         <field name="next_deactivate"/>
                     </group>
                 </group>
-                <field name="barcode" position="after">
+                <field name="type" position="after">
                     <field name="supplier_code"/>
                 </field>
                 <field name="uom_po_id" position="after">
