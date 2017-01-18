@@ -91,10 +91,6 @@
                     <attribute name="invisible">True</attribute>
                 </field>
 
-                <field name="categ_id" position="after">
-                    <field name="public_categ_ids"/>
-                </field>
-
                 <field name="type" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </field>
