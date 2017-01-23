@@ -71,8 +71,6 @@ Transindar Personalization
         # 'stock_inventory_preparation_filter',
         # 'base_state_active',
         # 'base_technical_features',
-        # 'partner_internal_code',
-        # 'product_internal_code',
 
         # dependencias para vistas
         'sale_stock_availability',
@@ -80,6 +78,8 @@ Transindar Personalization
         'product_website_categ_search',
         'sale_order_validity',
         'sale_quotation_products',
+        'partner_internal_code',
+        'product_internal_code',
         # 'partner_no_auto_search',
         # 'product_no_auto_search',
         # no migrados todavia
