@@ -78,7 +78,7 @@ Transindar Personalization
         'product_website_categ_search',
         'sale_order_validity',
         'sale_quotation_products',
-        'partner_internal_code',
+        # 'partner_internal_code',
         'product_internal_code',
         # 'partner_no_auto_search',
         # 'product_no_auto_search',
