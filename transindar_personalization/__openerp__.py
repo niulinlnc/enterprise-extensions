@@ -70,6 +70,7 @@ Transindar Personalization
         # 'base_technical_features',
 
         # dependencias para vistas
+        'sale_global_three_discounts',
         'sale_exception_price_security',
         'sale_stock_availability',
         'product_brand',
