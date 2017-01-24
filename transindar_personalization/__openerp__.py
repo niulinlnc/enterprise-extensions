@@ -66,13 +66,13 @@ Transindar Personalization
         # 'purchase_quotation_products',
         # 'sale_exception_credit_limit',
         # 'sale_exception_partner_state',
-        # 'sale_exception_price_security',
         # 'sale_quotation_products',
         # 'stock_inventory_preparation_filter',
         # 'base_state_active',
         # 'base_technical_features',
 
         # dependencias para vistas
+        'sale_exception_price_security',
         'sale_stock_availability',
         'product_brand',
         'product_website_categ_search',
