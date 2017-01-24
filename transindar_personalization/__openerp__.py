@@ -58,8 +58,6 @@ Transindar Personalization
         # 'product_no_translation',
         # 'product_price_currency',
         # 'product_pricelist',
-        # 'product_price_taxes_included',
-        # 'product_sale_price_by_margin',
         # 'product_template_search_by_barcode',
         # 'purchase_quotation_products',
         # 'sale_exception_credit_limit',
@@ -70,6 +68,8 @@ Transindar Personalization
         # 'base_technical_features',
 
         # dependencias para vistas
+        'product_price_taxes_included',
+        'product_sale_price_by_margin',
         'sale_global_three_discounts',
         'sale_exception_price_security',
         'sale_stock_availability',
