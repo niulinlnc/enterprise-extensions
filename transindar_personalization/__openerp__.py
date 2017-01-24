@@ -88,8 +88,8 @@ Transindar Personalization
         # 'product_template_tree_prices',
         'account_invoice_control',
         'sale_order_type',
+        'sale_order_dates',
         # no se migran
-        # 'sale_order_dates',
         # AGREGADOS POR JUAN
     ],
     'data': [
