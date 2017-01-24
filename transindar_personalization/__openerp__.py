@@ -33,8 +33,6 @@ Transindar Personalization
         # dependencias no necesarias
         # 'base_name_search_improved',
         # 'product_category_full_name_search',
-        # 'sale_three_discounts',
-        # 'sale_global_discount',
         # 'l10n_ar_account',
         # 'l10n_ar_afipws_fe',
         # 'account_accountant',
@@ -78,6 +76,8 @@ Transindar Personalization
         'product_website_categ_search',
         'sale_order_validity',
         'sale_quotation_products',
+        'sale_three_discounts',
+        'sale_global_discount',
         # 'partner_internal_code',
         'product_internal_code',
         # 'partner_no_auto_search',
