@@ -53,7 +53,8 @@
                     <field name="supplier_code" string="Supplier Code"/>
                     <field name="internal_code" string="Internal Code"/>
                 </xpath>
-                <xpath expr="//field[@name='order_line']//tree//field[@name='discount3']" position="after">
+                <!-- <xpath expr="//field[@name='order_line']//tree//field[@name='discount3']" position="after"> -->
+                <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="before"> 
                     <field name="price_reduce" string="Discounted Unit Price"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']//tree//field[@name='virtual_available']" position="attributes">
