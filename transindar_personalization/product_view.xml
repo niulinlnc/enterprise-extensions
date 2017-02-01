@@ -25,6 +25,9 @@
                         <field name="next_deactivate"/>
                     </group>
                 </group>
+                <field name="type" position="after">
+                    <field name="supplier_code"/>
+                </field>
                 <field name="uom_po_id" position="after">
                     <field name="quantity_per_pack"/>
                 </field>
@@ -47,7 +50,8 @@
                 <field name="product_brand_id" position="after">
                     <field name="default_code" readonly="True"/>
                     <field name="mian_supplier_id" readonly="True"/>
-                    <field name="public_categ_ids" widget="many2many_tags" readonly="True"/>
+                    <!-- por performance lo sacamos -->
+                    <!-- <field name="public_categ_ids" widget="many2many_tags" readonly="True"/> -->
                 </field>
                 <field name="state" position="attributes">
                     <attribute name="invisible">True</attribute>
@@ -88,10 +92,6 @@
 
                 <field name="categ_id" position="attributes">
                     <attribute name="invisible">True</attribute>
-                </field>
-
-                <field name="categ_id" position="after">
-                    <field name="public_categ_ids"/>
                 </field>
 
                 <field name="type" position="attributes">

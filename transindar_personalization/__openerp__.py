@@ -21,7 +21,7 @@
 {
     'name': 'Transindar Personalization',
     'category': 'Stock',
-    'version': '9.0.2.4.0',
+    'version': '9.0.2.6.0',
     'description': """
 Transindar Personalization
 ==========================
