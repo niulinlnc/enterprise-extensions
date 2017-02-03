@@ -34,45 +34,6 @@
             </field>
         </record>
 
-        <record id="view_product_product_tree" model="ir.ui.view">
-            <field name="name">Boggio Personalization product.product.tree</field>
-            <field name="model">product.product</field>
-            <field name="inherit_id" ref="sale_quotation_products.product_product_tree_view"/>
-            <field name="priority">20</field>
-            <field name="arch" type="xml">
-                <!-- inherit of product tree view of sale quoatation -->
-                <field name="default_code" position="replace"/>
-                <field name="attribute_value_ids" position="replace"/>
-                <field name="name" position="before">
-                    <field name="internal_code" readonly="True"/>
-                    <field name="supplier_code" readonly="True"/>
-                </field>
-                <field name="product_brand_id" position="after">
-                    <field name="default_code" readonly="True"/>
-                    <field name="main_seller_id" readonly="True"/>
-                    <!-- por performance lo sacamos -->
-                    <!-- <field name="public_categ_ids" widget="many2many_tags" readonly="True"/> -->
-                </field>
-                <field name="state" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
-                <field name="uom_id" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </field>
-                <field name="product_brand_id" position="attributes">
-                    <attribute name="readonly">True</attribute>
-                </field>
-                <field name="virtual_available" position="after">
-                     <field name="stk_tmp_ros" readonly="True"/>
-                     <field name="stk_tmp_sfe" readonly="True"/>
-                     <field name="stk_tmp_raf" readonly="True"/>
-                     <field name="replenishment_cost_rule_id" readonly="1"/>
-                     <field name="replenishment_cost_last_update" readonly="1"/>
-                </field>
-
-            </field>
-        </record>
-
         <record id="view_product_tree" model="ir.ui.view">
             <field name="name">Boggio Personalization product.template.tree</field>
             <field name="model">product.template</field>
