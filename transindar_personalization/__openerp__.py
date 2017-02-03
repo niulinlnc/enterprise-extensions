@@ -68,6 +68,7 @@ Transindar Personalization
         # 'base_technical_features',
 
         # dependencias para vistas
+        'product_supplier_search',
         'stock_picking_control',
         'account_payment_group',
         'product_replenishment_cost_rule',

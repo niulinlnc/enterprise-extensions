@@ -11,8 +11,9 @@ class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
 
-    mian_supplier_id = fields.Many2one(
-        related='seller_ids.name', string="Supplier")
+    # lo moví a product supplier search
+    # mian_supplier_id = fields.Many2one(
+    #     related='seller_ids.name', string="Supplier", store=True,)
     supplier_code = fields.Char(
         related='seller_ids.product_code', string="Supplier Code")
     location_1 = fields.Char(String='Location 1')
