@@ -98,17 +98,17 @@ Transindar Personalization
         # AGREGADOS POR JUAN
     ],
     'data': [
-        'security/security.xml',
-        'sale_order_view.xml',
-        'product_view.xml',
-        'account_payment_view.xml',
-        'category_public_view.xml',
-        'category_public_view.xml',
-        'invoice_view.xml',
+        # 'security/security.xml',
+        # 'sale_order_view.xml',
+        # 'product_view.xml',
+        # 'account_payment_view.xml',
+        # 'category_public_view.xml',
+        # 'category_public_view.xml',
+        # 'invoice_view.xml',
         # already noupdate on production
         # 'res_partner_view.xml',
-        'stock_picking_view.xml',
-        'res_company_view.xml'
+        # 'stock_picking_view.xml',
+        # 'res_company_view.xml'
     ],
     'demo': [
         # 'demo/load_es_lang.yml',
