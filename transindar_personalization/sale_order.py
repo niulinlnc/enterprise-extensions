@@ -51,8 +51,9 @@ class SaleOrderLine(models.Model):
     @api.one
     @api.onchange('additional_description')
     def change_additional_description(self):
-        self.product_id_change()
-        name = self.name
+        line = self.new({'product_id': self.product_id.id})
+        line.product_id_change()
+        name = line.name
         if self.additional_description:
             name = "%s\n%s" % (name, self.additional_description or '')
         self.name = name
