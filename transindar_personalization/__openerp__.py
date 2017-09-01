@@ -94,6 +94,8 @@ Transindar Personalization
         'account_invoice_control',
         'sale_order_type',
         'sale_order_dates',
+        'purchase_usability',
+        'product_replenishment_cost',
         # no se migran
         # AGREGADOS POR JUAN
     ],
