@@ -23,6 +23,7 @@ Several Improvements to accounting:
 #. Backport from v10 of analytic report
 #. Add on journal items availability to search and group by analytic account and to search by analytic tags
 #. Add button to cancel paid invoices that don't have related payments. This happends, for eg, if invoice amount is zero or if counterpart account is no receivable or payable.
+#. Make origin always visible on invoices. By default odoo only make it visible when it has a value. The issue is that a user can delete the value but can't restore it again. We also think is a good idea to make it editable in case you want to link a manual invoice to, for eg, a sale order
 
 
 Installation
