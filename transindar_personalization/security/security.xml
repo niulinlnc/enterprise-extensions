@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<openerp>
+<odoo>
     <data noupdate="0">
     <!-- <data noupdate="1"> -->
 
@@ -120,5 +120,5 @@ portal_account_distributor.access_product_product,product.product.portal.distrib
 
 
     </data> 
-</openerp>
+</odoo>
 
