@@ -116,7 +116,7 @@ Transindar Personalization
         # 'demo/load_es_lang.yml',
     ],
     'test': [],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }
