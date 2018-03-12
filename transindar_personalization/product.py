@@ -3,8 +3,8 @@
 # For copyright and license notices, see __manifest__.py file in module root
 # directory
 ##############################################################################
-from openerp import fields, models, api
-# from openerp.osv import expression
+from odoo import fields, models, api
+# from odoo.osv import expression
 
 
 class ProductTemplate(models.Model):
