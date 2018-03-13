@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Accoount Usability Improvements',
-    'version': '9.0.1.13.0',
+    'version': '9.0.1.14.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
