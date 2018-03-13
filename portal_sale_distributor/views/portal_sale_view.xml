@@ -18,6 +18,18 @@
                     </header>
                 </header>
                 <button name="action_view_invoice" position="replace"/>
+                <field name="validity_date" position="attributes">
+                    <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))]}</attribute>
+                </field>
+                <field name="payment_term_id" position="attributes">
+                    <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))],'readonly':[('state','not in',('draft','sent'))]}</attribute>
+                </field>
+                <label for="carrier_id" position="attributes">
+                     <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))]}</attribute>
+                 </label>
+                <field name="carrier_id" position="attributes">
+                    <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))],'readonly':[('state','not in',('draft','sent'))]}</attribute>
+                </field>
             </field>
         </record>
     </data>
