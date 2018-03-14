@@ -24,11 +24,14 @@
                 <field name="payment_term_id" position="attributes">
                     <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))],'readonly':[('state','not in',('draft','sent'))]}</attribute>
                 </field>
-                <label for="carrier_id" position="attributes">
-                     <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))]}</attribute>
-                 </label>
                 <field name="carrier_id" position="attributes">
-                    <attribute name="attrs">{'invisible':[('state', 'in', ('draft', 'sent'))],'readonly':[('state','not in',('draft','sent'))]}</attribute>
+                    <attribute name="attrs">{'readonly':[('state','not in',('draft','sent'))]}</attribute>
+                </field>
+                <button name="delivery_set" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <field name="delivery_price" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </field>
             </field>
         </record>
