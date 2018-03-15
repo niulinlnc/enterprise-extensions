@@ -4,6 +4,26 @@
 # directory
 ##############################################################################
 from openerp import models, api
+import logging
+
+_logger = logging.getLogger(__name__)
+
+
+# vimos que no aporta, por ahora comentamos
+# class PurchaseOrder(models.Model):
+#     _inherit = "purchase.order"
+
+#     @api.multi
+#     def button_confirm(self):
+#         param = self.env['ir.config_parameter'].get_param(
+#                 'purchase_order_button_confirm')
+#         if param == 'tracking_disable':
+#             _logger.info('tracking_disable on PO confirm ')
+#             self = self.with_context(tracking_disable=True)
+#         elif param == 'mail_notrack':
+#             _logger.info('mail_notrack on PO confirm ')
+#             self = self.with_context(mail_notrack=True)
+#         return super(PurchaseOrder, self).button_confirm()
 
 
 class PurchaseOrderLine(models.Model):
