@@ -1,5 +1,5 @@
 Se agrego la posibilidad de definir:
-* estos parametrosstock_picking_do_transfer, purchase_order_button_confirm, sale_order_action_confirm
+* estos parametros stock_picking_do_transfer, purchase_order_button_confirm, sale_order_action_confirm
 * con estos valores: tracking_disable o mail_notrack
 
 # SOBRE no tracking

@@ -89,7 +89,7 @@ class AdhocModuleRepository(models.Model):
         help='eg. "product"',
     )
     branch = fields.Selection(
-        [('8.0', '8.0'), ('9.0', '9.0')],
+        [('8.0', '8.0'), ('9.0', '9.0'), ('11.0', '11.0')],
         'Branch / Odoo Version',
         required=True,
     )
