@@ -171,9 +171,13 @@ class AdhocModuleRepository(models.Model):
 
     @api.model
     def get_module_info(self, name):
+        descriptor = {'8.0': '__openerp__.py',
+                      '9.0': '__openerp__.py',
+                      '11.0': '__manifest__.py'}
         info = {}
         try:
-            response = self.read_remote_path("%s/__openerp__.py" % name)
+            response = self.read_remote_path("%s/%s" % (
+                name, descriptor.get(self.branch, '__manifest__.py')))
             encoded_content = response.parsed['content']
             info = load_information_from_contents(
                 base64.b64decode(encoded_content))
