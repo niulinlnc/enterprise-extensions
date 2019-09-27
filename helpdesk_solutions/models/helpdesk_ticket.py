@@ -19,10 +19,16 @@ class HelpdeskTicket(models.Model):
     )
     solution_description = fields.Html(
     )
+    description_copy = fields.Text(
+        related='description',
+        readonly=False,
+        string= 'Description (copy)',
+    )
 
     @api.constrains('stage_id')
     def change_stage_id(self):
-        for rec in self.filtered("stage_id.solution_required"):
+        for rec in self.filtered(
+                lambda x: x.partner_id and x.stage_id.solution_required):
             if len(html2plaintext(rec.solution_description)) <= 1:
                 raise ValidationError(_(
                     'You need to complete solution'

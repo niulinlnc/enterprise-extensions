@@ -10,7 +10,7 @@ class HelpdeskSolution(models.Model):
     _name = 'helpdesk.solution'
     _inherit = ['mail.thread']
     _description = "Helpdesk Solution"
-    _order = 'name'
+    _order = 'ticket_count desc'
 
     name = fields.Char(
         required=True,
@@ -30,6 +30,11 @@ class HelpdeskSolution(models.Model):
     )
     ticket_count = fields.Integer(
         compute='_compute_ticket_count',
+        store=True,
+    )
+    active = fields.Boolean(
+        default=True,
+        copy=False,
     )
 
     @api.depends('ticket_ids')
@@ -37,4 +42,4 @@ class HelpdeskSolution(models.Model):
         """ Amount of tickets related to this Helpdesk Solution
         """
         for rec in self:
-            rec.update({'ticket_count': len(rec.ticket_ids)})
+            rec.ticket_count = len(rec.ticket_ids)

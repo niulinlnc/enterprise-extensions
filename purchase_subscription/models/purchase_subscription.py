@@ -6,7 +6,6 @@
 from dateutil.relativedelta import relativedelta
 import datetime
 import logging
-import time
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
@@ -169,7 +168,7 @@ class PurchaseSubscription(models.Model):
                 'purchase.subscription') or 'New'
         if vals.get('name', 'New') == 'New':
             vals['name'] = vals['code']
-        return super(PurchaseSubscription, self).create(vals)
+        return super().create(vals)
 
     @api.multi
     def _prepare_invoice_data(self):
@@ -217,7 +216,7 @@ class PurchaseSubscription(models.Model):
             'company_id': company.id,
         }
         if partner.user_id:
-            invoice.update({'user_id': partner.user_id.id})
+            invoice.user_id = partner.user_id.id
         return invoice
 
     def _prepare_invoice_line(self, line, fiscal_position):
@@ -225,16 +224,17 @@ class PurchaseSubscription(models.Model):
             company = self.env['res.company'].browse(
                 self.env.context['force_company'])
         else:
-            company = line.analytic_account_id.company_id
+            company = line.purchase_subscription_id.company_id
             line = line.with_context(
                 force_company=company.id, company_id=company.id)
 
-        account = line.product_id.property_account_income_id
+        account = line.product_id.property_account_expense_id
         if not account:
-            account = line.product_id.categ_id.property_account_income_categ_id
+            account = line.product_id.\
+                categ_id.property_account_expense_categ_id
         account_id = fiscal_position.map_account(account).id
 
-        tax = line.product_id.taxes_id.filtered(
+        tax = line.product_id.supplier_taxes_id.filtered(
             lambda r: r.company_id == company)
         tax = fiscal_position.map_tax(
             tax, product=line.product_id, partner=self.partner_id)
@@ -271,6 +271,13 @@ class PurchaseSubscription(models.Model):
         invoice = self._prepare_invoice_data()
         invoice['invoice_line_ids'] = self._prepare_invoice_lines(
             invoice['fiscal_position_id'])
+        temp_invoice = self.env['account.invoice'].new(invoice)
+        new_lines = []
+        for temp_line in temp_invoice.invoice_line_ids:
+            temp_line._set_additional_fields(temp_invoice)
+            new_lines.append(
+                (0, 0, temp_line._convert_to_write(temp_line._cache)))
+        invoice['invoice_line_ids'] = new_lines
         return invoice
 
     @api.multi
@@ -278,7 +285,7 @@ class PurchaseSubscription(models.Model):
         auto_commit = self.env.context.get('auto_commit', True)
         cr = self.env.cr
         invoices = self.env['account.invoice']
-        current_date = time.strftime('%Y-%m-%d')
+        current_date = datetime.date.today()
         if len(self) > 0:
             subscriptions = self
         else:
@@ -314,9 +321,7 @@ class PurchaseSubscription(models.Model):
                         new_invoice.with_context(
                             context_company).compute_taxes()
                         invoices += new_invoice
-                        next_date = datetime.datetime.strptime(
-                            subscription.recurring_next_date or current_date,
-                            "%Y-%m-%d")
+                        next_date = subscription.recurring_next_date or current_date
                         periods = {'daily': 'days', 'weekly': 'weeks',
                                    'monthly': 'months', 'yearly': 'years'}
                         invoicing_period = relativedelta(
@@ -361,7 +366,7 @@ class PurchaseSubscription(models.Model):
         self.ensure_one()
         invoices = self.env['account.invoice'].search(
             [('invoice_line_ids.purchase_subscription_id', 'in', self.ids)])
-        action = self.env.ref('account.action_invoice_tree2').read()[0]
+        action = self.env.ref('account.action_vendor_bill_template').read()[0]
         action["context"] = {"create": False}
         if len(invoices) > 1:
             action['domain'] = [('id', 'in', invoices.ids)]
@@ -399,16 +404,15 @@ class PurchaseSubscription(models.Model):
         # Expires now
         fill_remind("new", [('state', 'in', ['draft', 'open']),
                             '&', ('date', '!=', False),
-                            ('date', '<=', time.strftime('%Y-%m-%d')),
+                            ('date', '<=', datetime.date.today()),
                             ], True)
 
         # Expires in less than 30 days
         fill_remind("future", [
             ('state', 'in', ['draft', 'open']),
             ('date', '!=', False),
-            ('date', '<', (datetime.datetime.now() + datetime
-                           .timedelta(30)).strftime("%Y-%m-%d"))])
-        base_url = self.env['ir.config_parameter'].get_param(
+            ('date', '<', (datetime.datetime.today() + datetime.timedelta(30)))])
+        base_url = self.env['ir.config_parameter'].sudo().get_param(
             'web.base.url')
         action_id = self.env['ir.model.data'].get_object_reference(
             'purchase_subscription', 'purchase_subscription_action')[1]

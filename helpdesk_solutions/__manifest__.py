@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Helpdesk Solutions',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'category': 'Projects & Services',
     'sequence': 14,
     'summary': '',
@@ -36,6 +36,7 @@
         'views/helpdesk_solution_views.xml',
         'views/helpdesk_solution_tag_views.xml',
         'views/helpdesk_stage_views.xml',
+        'views/helpdesk_templates.xml',
         'security/ir.model.access.csv',
     ],
     'demo': [

@@ -6,8 +6,12 @@
         <field name="model">sale.subscription</field>
         <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
         <field name="arch" type="xml">
-            <field name="date" position="before">
+            <form>
                 <field name="dates_required" invisible="1"/>
+                <field name="use_different_invoice_address" invisible="1"/>
+            </form>
+            <field name="partner_id" position="after">
+                <field name="partner_invoice_id" context="{'default_type':'invoice'}" options='{"always_reload": True}' attrs="{'invisible': [('use_different_invoice_address', '=', False)]}"/>
             </field>
             <field name="date" position="attributes">
                 <attribute name="attrs">{'required': [('dates_required', '=', True)]}</attribute>
@@ -15,16 +19,23 @@
             <field name="date_start" position="attributes">
                 <attribute name="attrs">{'required': [('dates_required', '=', True)]}</attribute>
             </field>
-            <!-- TODO K review with jjs if we needeed in the subscription
-            <field name="analytic_account_id" position="after">
-                <field name="journal_id"/>
+            <field name="recurring_next_date" position="after">
+                <button class="oe_link" name="update_lines_prices_from_products" string="⇒ Actualizar precios" type="object" confirm="Se van a actualizar los precios las lineas de la suscripcion con los precios actualizados para la lista seleccionada"/>
             </field>
-            -->
-            <button name="recurring_invoice" position="after">
-                <button class="oe_link" name="update_lines_prices_from_products" string="⇒ Update Data from Products" type="object"/>
-            </button>
             <field name="product_id" position="before">
                 <field name="sequence" widget="handle"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_subscription_view_search" model="ir.ui.view">
+        <field name="name">sale.subscription.view.search</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_search"/>
+        <field name="arch" type="xml">
+            <!-- hacemos este arreglo porque el campo name de odoo no parece tener mucho uso y no se actualiza al cambiar el ref. O sea, casi no tiene sentido que busque por ese name -->
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|', '|', ('analytic_account_id', 'ilike', self), ('code', 'ilike', self), ('name', 'ilike', self)]</attribute>
             </field>
         </field>
     </record>
